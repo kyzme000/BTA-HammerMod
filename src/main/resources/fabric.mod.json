@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "hammermod",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
+  "name": "Hammer Mod",
+  "description": "This mod does funny.",
   "authors": [
-    "Turnip Labs"
+    "kuzme"
   ],
   "contact": {
     "homepage": "",
@@ -19,20 +19,29 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"kuzme.hammermod.HammerMod"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"kuzme.hammermod.HammerMod"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"kuzme.hammermod.HammerMod"
 		],
-		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+		"client": [
+			"kuzme.hammermod.HammerClient"
+		],
+		"beforeClientStart": [
+			"kuzme.hammermod.HammerClient"
+		],
+		"afterClientStart": [
+			"kuzme.hammermod.HammerClient"
+		],
+		"initModels": [
+			"kuzme.hammermod.HammerModelEntrypoint"
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+      "hammermod.mixins.json"
   ],
 
   "depends": {
