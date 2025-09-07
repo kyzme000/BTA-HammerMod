@@ -18,6 +18,7 @@ public class ItemHammer extends Item {
 	public ItemHammer(String name, String namespaceId, int id) {
 		super(name, namespaceId, id);
 		this.maxStackSize = 1;
+		this.setMaxDamage(100);
 	}
 
 	public boolean hitEntity(ItemStack itemstack, Mob target, Mob attacker) {
@@ -39,6 +40,7 @@ public class ItemHammer extends Item {
 		}
 		world.playSoundAtEntity(attacker, attacker, "hammermod:hammer",
 			0.45F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 0.6F);
+		itemstack.damageItem(1, attacker);
 		return true;
 	}
 
