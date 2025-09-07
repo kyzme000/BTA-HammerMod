@@ -6,7 +6,10 @@
     "mixins": [
       "accessor.MobAccessor",
       "MobMixin",
-      "MobRendererMixin"
+      "MobRendererMixin",
+      "MobRendererCreeperMixin",
+      "PacketHandlerClientMixin",
+      "PacketHandlerServerMixin"
     ],
     "client": [
     ],

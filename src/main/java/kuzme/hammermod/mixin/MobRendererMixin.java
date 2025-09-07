@@ -1,5 +1,6 @@
 package kuzme.hammermod.mixin;
 
+import com.mojang.nbt.tags.CompoundTag;
 import kuzme.hammermod.util.IScalable;
 import net.minecraft.client.render.entity.*;
 import net.minecraft.core.entity.Mob;
@@ -13,9 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MobRendererMixin<T extends Mob> {
 	@Inject(method = "setupScale", at = @At("HEAD"))
 	private void injectSetupScale(T entity, float partialTick, CallbackInfo ci) {
+		float scale;
+
 		if (entity instanceof IScalable) {
-			IScalable scalable = (IScalable) entity;
-			float scale = scalable.getScale();
+			scale = ((IScalable) entity).getScale();
 
 			GL11.glScalef(scale, scale, scale);
 

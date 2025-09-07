@@ -8,6 +8,7 @@ import net.minecraft.core.entity.Mob;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.world.World;
+import turniplabs.halplibe.helper.EnvironmentHelper;
 
 import java.util.Random;
 
@@ -34,9 +35,11 @@ public class ItemHammer extends Item {
 			accessor.invokeSetSize( oldWidth*0.5f, oldHeight*0.5f);
 			target.heightOffset *= newScale;
 			target.setPos(target.x, target.y + (oldHeight - target.bbHeight), target.z);
+			world.sendGlobalMessage("scale: "+((IScalable) target).getScale()+"was: "+current);
 
-
-			NetHandler.sendPoinnToNearby(world, current, newScale, oldWidth, oldHeight);
+			if (EnvironmentHelper.isServerEnvironment()) {
+				NetHandler.sendPoinnToNearby(world, target.id, newScale);
+			}
 		}
 		world.playSoundAtEntity(attacker, attacker, "hammermod:hammer",
 			0.45F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 0.6F);
